@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#242738"><meta name="description" content="Um espaço leve para organizar suas tarefas e dar o próximo passo.">
+  <title>{{title}} — Passo</title>
+  <link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/style.css"><script src="/navigation.js" defer></script><script src="/app.js" defer></script>
+</head>
+<body data-page="{{page}}">
+<a class="skip" href="#conteudo">Ir para tarefas</a>
+<aside class="sidebar">
+  <a href="/" class="brand"><img src="/favicon.svg" alt="" width="38" height="38">passo<span>workspace</span></a>
+  <div class="workspace"><span class="avatar">ME</span><div><strong>Meu espaço</strong><small>Um passo de cada vez</small></div><span class="workspace-dot"></span></div>
+  <p class="nav-label">ORGANIZAR</p>
+  <nav aria-label="Páginas de tarefas">
+    <a class="nav-item active" data-filter="todas" href="/tarefas" aria-current="page"><span class="nav-icon" aria-hidden="true">▦</span>Todas as tarefas<span class="count" id="nav-total">0</span></a>
+    <a class="nav-item" data-filter="pendentes" href="/pendentes"><span class="nav-icon" aria-hidden="true">◷</span>Pendentes<span class="count" id="nav-pending">0</span></a>
+    <a class="nav-item" data-filter="concluidas" href="/concluidas"><span class="nav-icon" aria-hidden="true">✓</span>Concluídas<span class="count" id="nav-done">0</span></a>
+  </nav>
+  <div class="side-note"><span class="note-symbol" aria-hidden="true">✳</span><span class="note-label">LEMBRETE GENTIL</span><strong>Feito é melhor<br>que perfeito.</strong><p>Comece pequeno. O importante é dar o próximo passo.</p><div class="note-art" aria-hidden="true"><i></i><i></i><i></i><b>↗</b></div></div>
+  <div class="side-bottom"><button id="theme" class="quiet">◐ <span>Modo escuro</span></button><button id="help" class="quiet">⌘ <span>Atalhos de teclado</span><kbd>?</kbd></button><div class="local-status"><i></i> Seu espaço pessoal</div></div>
+</aside>
+<div class="main-shell">
+  <header class="topbar"><div class="breadcrumb">Meu espaço <span>/</span> <strong id="breadcrumb-title">Todas as tarefas</strong></div><div class="top-actions"><span id="today"></span><button id="export" class="icon-button" aria-label="Exportar tarefas em JSON" title="Exportar tarefas">↗</button><span class="avatar small">ME</span></div></header>
+<!-- PAGE_CONTENT -->
+</div>
+<dialog id="editor"><form id="task-form"><div class="dialog-top"><span class="dialog-icon">＋</span><button type="button" class="icon-button" data-close="editor" aria-label="Fechar">×</button></div><div class="eyebrow">UM PASSO DE CADA VEZ</div><h2 id="editor-title">O que vamos fazer?</h2><p>Uma ideia na cabeça, uma tarefa no seu espaço.</p><label for="task-title">Título da tarefa</label><textarea id="task-title" rows="3" maxlength="300" required placeholder="Ex.: estudar um novo conceito de Python"></textarea><div class="field-footer"><span id="form-error" role="alert"></span><span id="char-count">0/300</span></div><div class="dialog-actions"><button type="button" class="secondary" data-close="editor">Cancelar</button><button type="submit" class="primary" id="save-task">Criar tarefa <span>↗</span></button></div></form></dialog>
+<dialog id="delete-dialog"><div class="dialog-top"><span class="dialog-icon danger">×</span><button class="icon-button" data-close="delete-dialog" aria-label="Fechar">×</button></div><h2>Deixar essa tarefa para trás?</h2><p id="delete-title"></p><p>A exclusão é permanente. As outras tarefas ficam como estão.</p><p id="delete-error" role="alert"></p><div class="dialog-actions"><button class="secondary" data-close="delete-dialog">Manter tarefa</button><button id="confirm-delete" class="danger-button">Sim, excluir</button></div></dialog>
+<dialog id="help-dialog"><div class="dialog-top"><span class="dialog-icon">⌘</span><button class="icon-button" data-close="help-dialog" aria-label="Fechar">×</button></div><h2>Menos cliques, mais fluidez.</h2><div class="shortcut"><span>Nova tarefa</span><kbd>N</kbd></div><div class="shortcut"><span>Buscar tarefas</span><kbd>/</kbd></div><div class="shortcut"><span>Fechar janela</span><kbd>Esc</kbd></div><div class="shortcut"><span>Ver atalhos</span><kbd>?</kbd></div></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<template id="task-template"><article class="task-row"><button class="task-check" aria-label="Concluir tarefa"></button><div class="task-info"><button class="task-title"></button><span class="task-id"></span></div><span class="badge"></span><div class="row-actions"><button class="edit-button" aria-label="Editar tarefa" title="Editar tarefa">✎</button><button class="delete-button" aria-label="Excluir tarefa" title="Excluir tarefa">×</button></div></article></template>
+</body></html>
